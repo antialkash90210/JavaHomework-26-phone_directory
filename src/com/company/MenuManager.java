@@ -61,11 +61,12 @@ public class MenuManager {
         while (isRun) {
 
             ConsoleHelper.PrintMessage("Меню по умолчанию:");
-            ConsoleHelper.PrintMessage("1. Вывести строку с информацией по телефону");
+            ConsoleHelper.PrintMessage("1. Пример списка телефонов");
             ConsoleHelper.PrintMessage("2. Работа с характеристиками телефонов");
+            ConsoleHelper.PrintMessage("3. Каталог телефонов");
             ConsoleHelper.PrintMessage("0. Выход");
 
-            action = ConsoleHelper.InputInt("Введите номер пункта меню: ", 0, 2);
+            action = ConsoleHelper.InputInt("Введите номер пункта меню: ", 0, 3);
 
             switch (action) {
                 case 1: {
@@ -99,6 +100,45 @@ public class MenuManager {
                     }
                 }
                 break;
+
+                case 3: {
+                    PhoneFeatures phoneFeatures = new PhoneFeatures();
+
+                    while (isRun) {
+
+                        phoneFeatures.printCars();
+
+                        ConsoleHelper.PrintMessage("Меню:");
+                        ConsoleHelper.PrintMessage("1. Добавить машину в конец списка");
+
+                        ConsoleHelper.PrintMessage("0. Выход");
+
+                        action = ConsoleHelper.InputInt("Введите номер пункта меню: ", 0, 5);
+
+                        switch (action) {
+                            case 1: {
+                                int enginePower = ConsoleHelper.InputInt("Введите мощность двигателя(л/с): ");
+                                double maxSpeed = ConsoleHelper.InputDouble("Введите максимальную скорость (км/ч): ");
+                                double weight = ConsoleHelper.InputDouble("Введите вес машины (тонны): ");
+                                String brandName = ConsoleHelper.InputString("Введите марку машины: ");
+                                String model = ConsoleHelper.InputString("Введите модель машины: ");
+                                int colorIndex = ConsoleHelper.InputInt("Введите индекс цвета(0-красный, 1-зелёный, 2-голубой, 3-чёрный, 4-жёлтый): ", 0, 4);
+                                Phone.Color color = Phone.Color.values()[colorIndex];
+
+                                phoneFeatures.addCar(enginePower, maxSpeed, weight, brandName, model, color);
+                            }
+                            break;
+
+                            case 0: {
+                                isRun = false;
+                            }
+                            break;
+                        }
+                    }
+
+                }
+                break;
+
                 case 0: {
                     isRun = false;
                 }

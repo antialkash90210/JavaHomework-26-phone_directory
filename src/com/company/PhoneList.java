@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class PhoneList {
+
     private String[] phone = null;
     private String fileName = null;
 
@@ -42,6 +43,7 @@ public class PhoneList {
         return phone.length;
     }
 
+
     public void addToEnd(String value) {
         String[] tempPhone = new String[phone.length + 1];
 
@@ -52,6 +54,7 @@ public class PhoneList {
         tempPhone[tempPhone.length - 1] = value;
 
         phone = tempPhone;
+
     }
 
     public void deleteByIndex(int index) throws Exception {
