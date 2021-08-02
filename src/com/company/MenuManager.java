@@ -7,11 +7,10 @@ public class MenuManager {
         this.phoneStringGenerator = phoneStringGenerator;
     }
 
-    private void workWithPhrasesPhones(PhoneList phoneList) throws Exception {
+    private void workWithPhoneList(PhoneList phoneList) throws Exception {
         int action = -1;
         boolean isRun = true;
 
-        //меню по работе со списком телефонов
         while (isRun) {
             for (int i = 0; i < phoneList.getLength(); i++) {
                 String message = String.format("        %d - %s", i, phoneList.getByIndex(i));
@@ -25,11 +24,11 @@ public class MenuManager {
             ConsoleHelper.PrintMessage("        3. Сохранить характеристику");
             ConsoleHelper.PrintMessage("        4. Перезагрузить характеристику из файла");
             ConsoleHelper.PrintMessage("        0. Выход");
-            action = ConsoleHelper.InputInt("        Введите номер пункта меню: ", 0, 2);
+            action = ConsoleHelper.InputInt("        Введите номер пункта меню: ", 0, 4);
 
             switch (action) {
                 case 1: {
-                    String word = ConsoleHelper.InputString("        Введите характеристику телефона: ");
+                    String word = ConsoleHelper.InputString("        Введите слово: ");
                     phoneList.addToEnd(word);
                 }
                 break;
@@ -46,7 +45,6 @@ public class MenuManager {
                     phoneList.load();
                 }
                 break;
-
                 case 0: {
                     isRun = false;
                 }
@@ -56,7 +54,6 @@ public class MenuManager {
         }
     }
 
-    //меню по умолчанию
     public void executeOperationsOnThePhoneList() throws Exception {
         int action = -1;
         boolean isRun = true;
@@ -90,13 +87,13 @@ public class MenuManager {
                     switch (innerAction) {
                         case 1: {
                             PhoneList phoneDirectoryCallToAction = phoneStringGenerator.getPhoneDirectoryCallToAction();
-                            workWithPhrasesPhones(phoneDirectoryCallToAction);
+                            workWithPhoneList(phoneDirectoryCallToAction);
                         }
                         break;
 
                         case 2: {
                             PhoneList phonePrice = phoneStringGenerator.getPhonePrice();
-                            workWithPhrasesPhones(phonePrice);
+                            workWithPhoneList(phonePrice);
                         }
                         break;
                     }

@@ -24,7 +24,7 @@ public class PhoneList {
 
     public String getByIndex(int index) throws Exception {
         if (index < 0 || index > phone.length - 1) {
-            throw new Exception("Выход за границы списка телефонов");
+            throw new Exception("Выход за границы");
         }
 
         return phone[index];
@@ -32,7 +32,7 @@ public class PhoneList {
 
     public void setByIndex(int index, String value) throws Exception {
         if (index < 0 || index > phone.length - 1) {
-            throw new Exception("Выход за границы списка фраз");
+            throw new Exception("Выход за границы");
         }
 
         phone[index] = value;
@@ -109,5 +109,8 @@ public class PhoneList {
         }
 
         bufferedWriter.close();
+
+
     }
+
 }
